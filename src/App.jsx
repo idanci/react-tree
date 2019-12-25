@@ -38,54 +38,19 @@ const GenerateNode = () => {
 }
 
 const GenerateTree = () => {
-  let amountOfNodes = Math.ceil(Math.random() * 15 + 2);
+  let amountOfNodes = Math.ceil(Math.random() * 10 + 1);
   let nodesList = [];
   for (let i=0; i < amountOfNodes; i++) {
-    if (Math.ceil(Math.random() * 15) < 5) {
-      let node = GenerateNode();
-      if ((Math.random() * 2) < 1) {
-        node.children.push(GenerateNode());
-      };
-      nodesList.push(node);
-    }
+    let node = GenerateNode();
+    if ((Math.random() * 2) < 1) {
+      node.children.push(GenerateNode());
+    };
+    nodesList.push(node);
   }
   return nodesList;
 }
 
 class App extends React.Component {
-  // state = {
-  //   nodesList: [
-  //     {
-  //       id: Sequence.push(Sequence.length + 1),
-  //       name: 'A',
-  //       children: [
-  //         {
-  //           id: Sequence.push(Sequence.length + 1),
-  //           name: 'B',
-  //           children: []
-  //         }
-  //       ]
-  //     },
-  //     {
-  //       id: Sequence.push(Sequence.length + 1),
-  //       name: 'C',
-  //       children: [
-  //         {
-  //           id: Sequence.push(Sequence.length + 1),
-  //           name: 'D',
-  //           children: [
-  //             {
-  //               id: Sequence.push(Sequence.length + 1),
-  //               name: 'E',
-  //               children: []
-  //             }
-  //           ]
-  //         }
-  //       ]
-  //     }
-  //   ],
-  // };
-
   state = {
     nodesList: GenerateTree()
   }

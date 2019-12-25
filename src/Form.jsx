@@ -14,7 +14,7 @@ class Form extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className='add-node'>
+      <form onSubmit={this.handleSubmit} className={ this.props.parentId && 'add-node' }>
         <span>
           |--
           <input
