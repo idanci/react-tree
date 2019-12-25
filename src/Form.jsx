@@ -3,12 +3,13 @@ import './Form.css';
 
 class Form extends React.Component {
   state = {
-    newNodeName: ''
+    name: ''
   }
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.onSubmit(this.state.newNodeName);
+    this.props.onSubmit({name: this.state.name, parentId: this.props.parentId});
+    this.setState({name: ''})
   }
 
   render() {
@@ -18,8 +19,8 @@ class Form extends React.Component {
           |--
           <input
             type='text'
-            value={this.state.newNodeName}
-            onChange={event => this.setState({newNodeName: event.target.value})}
+            value={this.state.name}
+            onChange={event => this.setState({name: event.target.value})}
             required
           />
         </span>
