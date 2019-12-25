@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import NodesList from './NodesList';
 import Form from './Form';
+import FilterNodes from './Helpers';
 
 class App extends React.Component {
   state = {
@@ -38,15 +39,20 @@ class App extends React.Component {
   };
 
   addNewNode = (nodeData) => {
-    this.setState(prevState => ({nodesList: [...prevState.nodesList, nodeData]}))
+    console.log(nodeData);
+    // this.setState(prevState => ({nodesList: [...prevState.nodesList, nodeData]}))
+  };
+
+  deleteNode = (nodeId) => {
+    this.setState({ nodesList: FilterNodes(this.state.nodesList, nodeId) });
   };
 
   render() {
     return (
       <div className='App'>
         <div className='App-header'>{this.props.title}</div>
-        <NodesList nodes={this.state.nodesList} onSubmitNode={this.addNewNode}/>
         <Form onSubmit={this.addNewNode}/>
+        <NodesList nodes={this.state.nodesList} onSubmit={this.addNewNode} onDelete={this.deleteNode}/>
       </div>
     );
   }

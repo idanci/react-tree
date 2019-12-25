@@ -8,7 +8,7 @@ class Form extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state.newNodeName);
+    this.props.onSubmit(this.state.newNodeName);
   }
 
   render() {

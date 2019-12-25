@@ -5,11 +5,11 @@ import Form from './Form';
 class Node extends React.Component {
   render() {
     return (
-      <div className={this.props.child && 'child-node'}>
+      <div className={this.props.child && 'child-node' }>
         <span>|--{this.props.name}</span>
-        <button type='button'>-</button>
-        <Form onSubmit={this.props.onSubmitNode}/>
-        {this.props.children.map(node => <Node key={node.id} {...node} child={true}/>)}
+        <button onClick={ () => this.props.onDelete(this.props.id) }>-</button>
+        <Form onSubmit={this.props.onSubmit}/>
+        {this.props.children.map(node => <Node key={node.id} {...node} child={true} onSubmit={this.props.onSubmit} onDelete={this.props.onDelete}/>)}
       </div>
     );
   }
