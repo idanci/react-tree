@@ -6,7 +6,7 @@ import Form from './Form';
 const FilterNodes = (nodesList, id) => {
   var r = nodesList.filter(function(node) {
     if (node.children) { node.children = FilterNodes(node.children, id) };
-    return node.id != id
+    return node.id !== id
   })
   return r;
 };
@@ -18,11 +18,12 @@ const InsertNode = (nodesList, newNode) => {
     nodesList.push({id: Sequence.push(Sequence.length + 1), name: newNode.name, children: []})
   } else {
     nodesList.map(function(node) {
-      if(node.id == newNode.parentId) {
+      if(node.id === newNode.parentId) {
         node.children.push({id: Sequence.push(Sequence.length + 1), name: newNode.name, children: []})
       } else {
         InsertNode(node.children, newNode)
       }
+      return null;
     })
   }
 
